@@ -31,15 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function joke3() {
+    var chars = 'a*&sl-1b[;"'.split('');
+    var randomChar = '';
+
     setTimeout(function(){
-      var inputs = document.querySelectorAll('input[type=password]');
+      var inputs = document.querySelectorAll('input');
       var text = '';
 
       for(var i = 0; i<inputs.length; i++) {
         inputs[i].addEventListener('keyup', function(e){
           text = this.value;
           if(text.length > 3 && e.keyCode !== 91) {
-            text = text.split('').splice(1).join('') + 'x';
+            randomChar = chars[Math.floor((Math.random() * 10) + 1)];
+            text = text.split('').splice(1).join('') + randomChar;
             this.value = text;
           }
         })
